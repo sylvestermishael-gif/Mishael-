@@ -5,25 +5,61 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", sans-serif;
   
-  --color-brand-bg: #050505;
+  --color-brand-bg: #080808;
   --color-brand-card: #0f1115;
-  --color-brand-border: #1f2937;
+  --color-brand-border: #1a1a1a;
+  --color-accent: #3b82f6;
 }
 
 @layer base {
   body {
-    @apply bg-brand-bg text-gray-300 font-sans antialiased;
+    @apply bg-brand-bg text-gray-400 font-sans antialiased selection:bg-accent selection:text-white relative;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-white;
+    @apply font-display text-white tracking-tighter;
   }
 }
 
 .glass {
-  @apply bg-brand-card/50 backdrop-blur-md border border-brand-border/50;
+  @apply bg-white/[0.02] backdrop-blur-xl border border-white/5;
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/20;
+}
+
+.grid-lines {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.vertical-rail {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.border-subtle {
+  @apply border-white/[0.05];
+}
+
+.icon-glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0);
+  transition: box-shadow 0.5s ease;
+}
+
+.group:hover .icon-glow {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+.text-outline-hover:hover {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+  color: transparent;
 }
